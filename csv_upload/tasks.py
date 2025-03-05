@@ -12,7 +12,6 @@ def process_csv_file(file_path):
         'count': len(df)
     }
     
-    # Store or return results as needed
     return results
 
 @shared_task

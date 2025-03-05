@@ -10,7 +10,7 @@ def upload_file(request):
         if form.is_valid():
             file_instance = form.save()
             process_csv_file.delay(file_instance.file.path)  # Call Celery Task
-            return redirect('file_list')  # Redirect to results page
+            return redirect('file_list') 
     else:
         form = FileUploadForm()
     return render(request, 'upload.html', {'form': form})
@@ -25,7 +25,7 @@ def file_list(request):
     
     if latest_file:
         df = pd.read_csv(latest_file.file.path)
-        data = df.to_dict(orient='records')  # Convert dataframe to list of dicts
+        data = df.to_dict(orient='records')  
     else:
         data = None
     
